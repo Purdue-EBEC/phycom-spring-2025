@@ -1,0 +1,97 @@
+.text-left{
+    text-align: left !important;
+  }
+  .text-right{
+    text-align: right !important;
+  }
+
+  /* Example custom colors for light and dark theme */
+  html[data-theme="dark"] {
+    --sample-output-bg-color: var(--lt-color-gray-700);
+    --test-case-table-rule-color: var(--lt-color-gray-700);
+  }
+
+  html[data-theme="light"] {
+    --sample-output-bg-color: var(--lt-color-gray-200);
+    --test-case-table-rule-color: var(--lt-color-gray-900);
+  }
+
+  .admonition.sample-output, div.admonition.sample-output {
+    font-family: monospace;
+      border-color: var(--pst-color-attention);
+    background-color: var(--sample-output-bg-color);
+    overflow-x: auto;  /* Add horizontal scroll bar to wide output. */
+    overflow-y: auto;  /* Add vertical scroll bar to long output. */
+    max-height: 30rem; /* Limit height of output. */
+    display: grid;   /* Allow header to stretch horizontally. */
+    white-space: pre;
+  }
+
+  div.output-file {
+    overflow-x: auto;  /* Add horizontal scroll bar to wide output. */
+    overflow-y: auto;  /* Add vertical scroll bar to long output. */
+    max-height: 30rem; /* Limit height of output. */
+    display: grid;   /* Allow header to stretch horizontally. */
+  }
+
+  .admonition.sample-output > .admonition-title::before, div.admonition.sample-output > .admonition-title::before {
+      background-color: var(--pst-color-attention-bg);
+  }
+
+  .admonition.sample-output > .admonition-title::after, div.admonition.sample-output > .admonition-title::after {
+      color: var(--pst-color-attention);
+    content: ""; /* Font Awesome icon for "code-compare" */
+  }
+
+  img.sample-output {
+    border-radius: .25rem;
+    box-shadow: 0 .2rem .5rem var(--pst-color-shadow),0 0 .0625rem var(--pst-color-shadow) !important;
+  }
+
+  table.test-case-table {
+    border-block: 2px solid var(--test-case-table-rule-color);
+  }
+
+  table th {
+    border-bottom: 1px solid var(--test-case-table-rule-color);
+  }
+
+  table td {
+    border-bottom: none;
+  }
+
+  .deliverables {
+    background-color: #cbb992;
+  }
+
+  .deliverables th {
+    background-color: #595959;
+  }
+
+  .deliverables th * {
+    color: white;
+  }
+
+  .deliverables p {
+    color: black;
+  }
+
+  .user-input {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  svg {
+    stroke: var(--pst-color-text-base);
+  }
+
+  svg text {
+    font-family: var(--pst-font-family-base);
+    font-weight: 400;
+    line-height: 1.65;
+    fill: currentColor; /* inherit from parent */
+  }
+
+  svg polygon {
+    fill: currentColor;
+  }
