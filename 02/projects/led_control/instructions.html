@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.2.1. Dimming with PMW &#8212; Purdue University EBEC Physcial Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=aa06c882" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=a8e58a58"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02/projects/led_control/instructions';</script>
+    <script src="../../../_static/svg-inject.js?v=6590e184"></script>
+    <script src="../../../_static/svg_mathjax.js?v=40a69827"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2.2.2. Servo Control" href="../servo_control/instructions.html" />
+    <link rel="prev" title="2.2. Projects" href="../../2_projects.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Purdue University EBEC Physcial Computing - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Purdue University EBEC Physcial Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Physical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../01/0_lab_overview.html">1. Introduction to MicroPython and the Raspberry Pi Pico</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/1_learning_materials.html">1.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../01/2_projects.html">1.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/1_projectname/project_overview.html">1.2.1. Project 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/0_blink_onboard_led/instructions.html">Blink Onboard LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/1_blink_external_led/instructions.html">Blink External LED</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/2_projectname/project_overview.html">1.2.2. Project 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/0_led_switch/instructions.html">LED and Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/1_led_button/instructions.html">LED and Button</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/projects/stop-lights/instructions.html">1.2.3. Stop Light Project</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../0_lab_overview.html">2. Pulse Width Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../1_learning_materials.html">2.1. Learning Materials</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../2_projects.html">2.2. Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">2.2.1. Dimming with PMW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../servo_control/instructions.html">2.2.2. Servo Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shuffle_car/instructions.html">2.2.3. Shuffle Car</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../03/0_lab_overview.html">3. Lab 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../03/1_learning_materials.html">3.1. Learning Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../03/projects/temperature_lcd/instructions.html">3.2. Displaying Temperature on the LCD Screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../03/projects/etch-a-sketch/instructions.html">3.3. Etch-a-sketch</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Purdue-EBEC/entry-spring-2025/issues/new?title=Issue%20on%20page%20%2F02/projects/led_control/instructions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dimming with PMW</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-analog-input">Part 1 - Analog Input</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-circuit-setup-analog">Step 1: Circuit Setup (analog)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-code-setup-analog">Step 2: Code Setup (analog)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-the-program-analog">Step 3: Run the program (analog)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-pulse-width-modulation">Part 2 - Pulse Width Modulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-circuit-setup-pwm">Step 1: Circuit Setup (PWM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-code-setup-pwm">Step 2: Code setup (PWM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-the-program-pwm">Step 3: Run the program (PWM)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dimming-with-pmw">
+<h1><span class="section-number">2.2.1. </span>Dimming with PMW<a class="headerlink" href="#dimming-with-pmw" title="Link to this heading">#</a></h1>
+<section id="materials">
+<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>USB cable</p></li>
+<li><p>Breadboard</p></li>
+<li><p>Raspberry Pi Pico</p></li>
+<li><p>Resistor (same resistor calculated in external LED lab)</p></li>
+<li><p>LED (any color)</p></li>
+<li><p>Potentiometer (3 prong)</p></li>
+<li><p>Kit Wires</p></li>
+</ul>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<p>First we will build a circuit that changes an LED’s output with an analog input from a potentiometer. Then we’ll remove the analog input and achieve the same effect by shaping the time it spends ON versus OFF (PWM). This gives you more control over your parts, allowing you to run them anywhere within their full operational range (from 1 to 0). We will observe how changing the Duty Cycle, Frequency, and Period effects the LED output. Hopefully you will be able to see PWM as a tool you can use by the end of this lab.</p>
+</section>
+<section id="part-1-analog-input">
+<h2>Part 1 - Analog Input<a class="headerlink" href="#part-1-analog-input" title="Link to this heading">#</a></h2>
+<section id="step-1-circuit-setup-analog">
+<h3>Step 1: Circuit Setup (analog)<a class="headerlink" href="#step-1-circuit-setup-analog" title="Link to this heading">#</a></h3>
+<p>First take a look at the pico’s <a class="reference external" href="https://icircuit.net/wp-content/uploads/2024/12/image-13.png">GPIO pins</a> choose an output pin. In the pictures we used GP15 on pin 20, but you dont have to. Then select a GND pin, since they all do the same thing you don’t need to select carefully. Wire that GND pin with a kit wire to one of the blue GND terminals that run along the side of your breadboard. Connecting both GND terminals is possible and easy, but not necessary for this lab.</p>
+<p>Take the 3 pronged potentiometer, the blue component with a dial on top. Find the numbers that say 1 and 3, indicating which of the 3 pins are which. Place it with all three pins having their own rows, for example with pin 1 on row 25, 2 on row 26, and 3 on row 27. An example is shown below.</p>
+<p><img alt="example of potentiometer placement" src="../../../_images/potentiometer_example_bb.svg" /></p>
+<p>Use a wire from the kit to connect pin 1 of the potentiometer to the GND terminal we setup.</p>
+<p>Take the long leg (anode) of the LED and connect it to pin 2 of the potentiometer. Have the short leg (cathode) connect to an empty row. Connect the LED cathode to the same resistor you calculated and used in Unit 1’s external LED lab. <a class="reference internal" href="../../../01/projects/1_projectname/1_blink_external_led/instructions.html"><span class="std std-doc">see Lab 1 instructions here.</span></a> Place one end in the empty row from step 4. Then take the other end of the resistor and connect it to the GND terminal.</p>
+<p>Take another wire from the kit and connect pin 3 of the potentiometer to the GPIO pin you chose earlier. This pin will act as our voltage source in step 1. And with that, we’re ready to add code.</p>
+<p><img alt="visual of completed analog input circuit" src="../../../_images/analog_input_finished_circuit_bb.svg" /></p>
+</section>
+<section id="step-2-code-setup-analog">
+<h3>Step 2: Code Setup (analog)<a class="headerlink" href="#step-2-code-setup-analog" title="Link to this heading">#</a></h3>
+<p>Make a new <a class="reference external" href="http://main.py">main.py</a> file. Add the necessary imports of</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+</pre></div>
+</div>
+<p>Set our selected GPIO pin to be an output voltage source, and then set that source to HIGH for 3.3V output. Make sure to Replace XX with the number of the GPIO pin you chose while breadboarding.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vsource</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">vsource</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>Add a while loop to keep the pico on and running for the dimming circuit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-run-the-program-analog">
+<h3>Step 3: Run the program (analog)<a class="headerlink" href="#step-3-run-the-program-analog" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Run the completed <a class="reference external" href="http://main.py">main.py</a> file.</p></li>
+<li><p>What happens when you turn the potentiometer’s knob all the way left? What about all the way right?</p></li>
+<li><p>Towards which side of the potentiometer is there higher resistance values?</p></li>
+</ul>
+</section>
+</section>
+<section id="part-2-pulse-width-modulation">
+<h2>Part 2 - Pulse Width Modulation<a class="headerlink" href="#part-2-pulse-width-modulation" title="Link to this heading">#</a></h2>
+<section id="step-1-circuit-setup-pwm">
+<h3>Step 1: Circuit Setup (PWM)<a class="headerlink" href="#step-1-circuit-setup-pwm" title="Link to this heading">#</a></h3>
+<p>Completely deconstruct the circuit we made for part 1. Leave the pico on the board of course, and the GND terminal connected.</p>
+<p>Then setup a single external LED the same way as you did in Unit 1, with the same calculated resistor as Lab 1. The circuit is setup the same way we <a class="reference internal" href="../../../01/projects/1_projectname/1_blink_external_led/instructions.html"><span class="doc std std-doc">see in Unit 1: Blink External LED</span></a></p>
+<p>Take your resistor and connect it to one of the <a class="reference external" href="https://icircuit.net/wp-content/uploads/2024/12/image-13.png">GPIO pins.</a> Any of the GPIO pins will work, just make sure it’s the same one you use in the code. Put the other leg of the resistor into an empty row. Take the long leg (anode) of the LED and connect it to the resistor in the empty row you chose. Connect the LED’s short leg (cathode) to any GND pin directly, or to the GND terminal like in part 1 of this lab. Then the circuit is complete.</p>
+<p><img alt="visual of completed PWM input circuit" src="../../../_images/PMW_input_finished_circuit_bb.svg" /></p>
+</section>
+<section id="step-2-code-setup-pwm">
+<h3>Step 2: Code setup (PWM)<a class="headerlink" href="#step-2-code-setup-pwm" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Comment out all the code from part 1 in the <a class="reference external" href="http://main.py">main.py</a> file. Add the necessary imports of</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Set the GPIO pin you connected to and set the frequency to 1000Hz. Make sure to Replace ‘XX’ with the number of the GPIO pin you chose while breadboarding.</p></li>
+<li><p>1000Hz is chosen as the frequency because it is fast enough to create the illusion of a continuously lit LED, even though the LED is actually blinking.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">XX</span><span class="p">))</span>
+<span class="n">led</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add a control to the brightness by setting a value and calculating the Duty Cycle. Choose T_on as a value from 1-100, which we will use as the duty cycle.</p></li>
+<li><p>Relating the “duty_value” back to the <a class="reference internal" href="../../1_learning_materials.html#equation-lab2-pwm-duty-cycle">(2.1)</a>,  the “100” in “(T_on / 100)” is (T_on + T_off), or 100% of one period. Tperiod is set to 100, so any integer chosen between 1-100 for T_on will also be the duty cycle for our lab.</p></li>
+<li><p>The syntax “led.duty_u16” stores the duty cycle percentage as a register with a max value of 65535, which is why we multiply the duty cycle by 65535 before plugging it in.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">T_on</span> <span class="o">=</span> <span class="mi">70</span>  
+<span class="n">duty_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">T_on</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mi">65535</span><span class="p">)</span>
+
+<span class="n">led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Then add this while loop to keep the pico on and running for the dimming circuit.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>With that the code is ready to run.</p></li>
+</ul>
+</section>
+<section id="step-3-run-the-program-pwm">
+<h3>Step 3: Run the program (PWM)<a class="headerlink" href="#step-3-run-the-program-pwm" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Run the completed <a class="reference external" href="http://main.py">main.py</a> file.</p></li>
+<li><p>What happens when you increase the duty cycle? When you decrease it?</p></li>
+<li><p>What happens when you make the frequency around 60-100 Hz? What happens when it’s 500 Hz? Around what frequency do you see the LED blinking at?</p></li>
+<li><p>using the initial values 70% duty cycle, and 1000Hz frequency, how long in seconds is T_period? How long is T_on? Use the equations and relations from</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./02/projects/led_control"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../2_projects.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Projects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../servo_control/instructions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2.2. </span>Servo Control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-analog-input">Part 1 - Analog Input</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-circuit-setup-analog">Step 1: Circuit Setup (analog)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-code-setup-analog">Step 2: Code Setup (analog)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-the-program-analog">Step 3: Run the program (analog)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-pulse-width-modulation">Part 2 - Pulse Width Modulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-circuit-setup-pwm">Step 1: Circuit Setup (PWM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-code-setup-pwm">Step 2: Code setup (PWM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-the-program-pwm">Step 3: Run the program (PWM)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

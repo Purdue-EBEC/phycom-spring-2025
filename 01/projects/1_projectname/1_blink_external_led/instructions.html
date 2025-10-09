@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Blink External LED &#8212; Purdue University EBEC Physcial Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=aa06c882" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=a8e58a58"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01/projects/1_projectname/1_blink_external_led/instructions';</script>
+    <script src="../../../../_static/svg-inject.js?v=6590e184"></script>
+    <script src="../../../../_static/svg_mathjax.js?v=40a69827"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="1.2.2. Project 2" href="../../2_projectname/project_overview.html" />
+    <link rel="prev" title="Blink Onboard LED" href="../0_blink_onboard_led/instructions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="Purdue University EBEC Physcial Computing - Home"/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Purdue University EBEC Physcial Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Physical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../0_lab_overview.html">1. Introduction to MicroPython and the Raspberry Pi Pico</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../1_learning_materials.html">1.1. Learning Materials</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../2_projects.html">1.2. Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../project_overview.html">1.2.1. Project 1</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../0_blink_onboard_led/instructions.html">Blink Onboard LED</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Blink External LED</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../2_projectname/project_overview.html">1.2.2. Project 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../2_projectname/0_led_switch/instructions.html">LED and Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../2_projectname/1_led_button/instructions.html">LED and Button</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stop-lights/instructions.html">1.2.3. Stop Light Project</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../02/0_lab_overview.html">2. Pulse Width Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/1_learning_materials.html">2.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../02/2_projects.html">2.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/projects/led_control/instructions.html">2.2.1. Dimming with PMW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/projects/servo_control/instructions.html">2.2.2. Servo Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/projects/shuffle_car/instructions.html">2.2.3. Shuffle Car</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../03/0_lab_overview.html">3. Lab 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../03/1_learning_materials.html">3.1. Learning Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../03/projects/temperature_lcd/instructions.html">3.2. Displaying Temperature on the LCD Screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../03/projects/etch-a-sketch/instructions.html">3.3. Etch-a-sketch</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendices/contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Purdue-EBEC/entry-spring-2025/issues/new?title=Issue%20on%20page%20%2F01/projects/1_projectname/1_blink_external_led/instructions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Blink External LED</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-connect-the-raspberry-pi-to-the-breadboard">Step 1: Connect the Raspberry Pi to the breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-connect-a-resistor-to-breadboard">Step 2: Connect a resistor to breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-connect-the-led-to-the-breadboard">Step 3: Connect the LED to the breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-connect-the-raspberry-pico-to-the-computer">Step 4: Connect the Raspberry Pico to the Computer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-setting-up-our-variables">Step 1: Setting up our variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-toggling-the-led-on-and-off">Step 2: Toggling the LED on and off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-alternating-led-on-and-off">Step 3: Alternating LED on and off</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="blink-external-led">
+<h1>Blink External LED<a class="headerlink" href="#blink-external-led" title="Link to this heading">#</a></h1>
+<!-- Useful links (for Cheyenne, and instructors, not necessarily linked to students):
+[External Led Guide](https://docs.keyestudio.com/projects/KS3025/en/latest/Python_Windows/2.Projects/Project%2003%EF%BC%9AExternal%20LED%20flashing.html)
+[Micropython Documentation](https://docs.micropython.org/en/latest/)
+[Datasheet] (https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf) -->
+<p>In the last lab, you worked with an internal LED that was built into the Pico itself. Now, we are going to work with the breadboard and other components of our kit in order to control an external LED.</p>
+<section id="materials">
+<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>One LED of your choice</p></li>
+<li><p>One resistor</p></li>
+<li><p>One breadboard</p></li>
+<li><p>Raspberry Pi Pico</p></li>
+</ul>
+</section>
+<section id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h2>
+<section id="step-1-connect-the-raspberry-pi-to-the-breadboard">
+<h3>Step 1: Connect the Raspberry Pi to the breadboard<a class="headerlink" href="#step-1-connect-the-raspberry-pi-to-the-breadboard" title="Link to this heading">#</a></h3>
+<p>The Raspberry Pi Pico can emit voltage into the breadboard, allowing us to run voltage through a LED. This is why we must connect the Pico to the breadboard before we are able to light up our LED.</p>
+<p>To add our Raspberry Pi Pico to the breadboard, have the raspberry symbol face up and insert the headers into the holes of the breadboard. We want to ensure that the Pico doesn’t touch the +/- rails (the holes next to the blue and red lines at the edge of the breadboard). Look at the image below for reference of what the setup should look like.</p>
+<p><img alt="1" src="../../../../_images/base_board1.svg" /></p>
+<p>When we add our wires or LEDs to the breadboard, we need to know what pins of the Raspberry Pico we are connecting to. To see a diagram of the labels and types of each pin on the Raspberry Pico, check out <a class="reference external" href="https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf">this link</a>.</p>
+</section>
+<section id="step-2-connect-a-resistor-to-breadboard">
+<h3>Step 2: Connect a resistor to breadboard<a class="headerlink" href="#step-2-connect-a-resistor-to-breadboard" title="Link to this heading">#</a></h3>
+<p>To find out what resistor value we need for this activity, refer to the <a class="reference internal" href="../../../1_learning_materials.html#equation-lab1-ohms-law">(1.1)</a> to calculate resistor and the learning materials to guide you through finding your desired resistor value.</p>
+<p>Now, we need to put the given resistor into the breadboard. Use the link provided to the Pico Pin data sheet to find and pick a GP pin to use as our output-pin. This pin is what will be supplying voltage for our LED circuit.</p>
+<p>Once you have picked an GP-pin, connect one end of the resistor into the row of the breadboard that contains that pin. The other end of the resistor should be connected to a different row of the breadboard.</p>
+<p>For our example, we picked the GP16 pin which is located at the very bottom on the right side of the breadboard when the raspberry on the board is right-side up. Looking at the picture, this pin is in row 20, as such, one end of our resistor is in that row and the other is 4 rows up in row 16. Remember, this is simply an example, your breadboard might end up looking very different from ours and will still work out!</p>
+<p><img alt="2" src="../../../../_images/externalLED1.svg" /></p>
+</section>
+<section id="step-3-connect-the-led-to-the-breadboard">
+<h3>Step 3: Connect the LED to the breadboard<a class="headerlink" href="#step-3-connect-the-led-to-the-breadboard" title="Link to this heading">#</a></h3>
+<p>First, every LED has a positive leg and a negative leg. The longer leg is the ‘positive leg’. This leg should be connected to where the voltage is coming from. The LED will only glow if the voltage is supplied to the longer/positive leg and flows out through the shorter, negative leg.</p>
+<p>This means we must connect the longer leg of the LED so that the voltage from the resistor is flowing through the longer leg of the LED. This mean we need to connect the longer led to the row which contains our resistor and is not in the same row as the GP-pin that is outputting voltage. For our example, this row is row 16.</p>
+<p>Then put the shorter leg of the LED into a different row than the longer leg. For our example, we connect it to row 15.</p>
+<p><img alt="3" src="../../../../_images/externalLED2.svg" /></p>
+<p>To finish off our circuit by leading the current to a ground pin. This provides an end to the circuit or a path for the electrical current to complete the return to the power source. Think about how batteries need to connect with a positive and negative side.</p>
+<p>With the example and picture we provide, the pin in row 15 of the breadboard is a GND (ground) pin. If your LED’s shorter leg is not in the same row as a GND pin, use a wire to connect the row of LED’s shorter leg to a row that connects to a GND pin in the Raspberry Pico.</p>
+<p>Here is an example of what your breadboard might look like after these steps:
+<img alt="4" src="../../../../_images/final_photo.jpg" /></p>
+</section>
+<section id="step-4-connect-the-raspberry-pico-to-the-computer">
+<h3>Step 4: Connect the Raspberry Pico to the Computer<a class="headerlink" href="#step-4-connect-the-raspberry-pico-to-the-computer" title="Link to this heading">#</a></h3>
+<p>Using the USB cable that we previously used to connect the Raspberry Pico to the computer, connect the Raspberry Pico to the computer. Now that everything is connected, you can start coding!</p>
+</section>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<p>We are going to write a program that repeatedly toggles the LED on and off.</p>
+<section id="step-1-setting-up-our-variables">
+<h3>Step 1: Setting up our variables<a class="headerlink" href="#step-1-setting-up-our-variables" title="Link to this heading">#</a></h3>
+<p>In order to be able to light the external LED, we need to be able to control the output pin we picked. Set up a variable which references the GP-pin you picked to output voltage. For our example, it was GP16 which means that we are changing pin 16.</p>
+<p>Following our example, our code will look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since our example uses pin GP16, the first argument we input is 16. This means if you are using pin GP20, your led variable will look like this: <code class="docutils literal notranslate"><span class="pre">led</span> <span class="pre">=</span> <span class="pre">Pin(20,</span> <span class="pre">Pin.OUT)</span></code>.</p>
+</section>
+<section id="step-2-toggling-the-led-on-and-off">
+<h3>Step 2: Toggling the LED on and off<a class="headerlink" href="#step-2-toggling-the-led-on-and-off" title="Link to this heading">#</a></h3>
+<p>We want our code to <em>repeatedly</em> turn the LED on and off, so we are going to place our code inside a while loop where the condition is always true. As a result, the code will continuously run until the user stops it. You can stop running the code by pressing CTRL+C on your computer (CMD+C on Mac).</p>
+<p>To turn the LED on and off, we can use one of the methods of our Pin object, the <code class="docutils literal notranslate"><span class="pre">toggle()</span></code> method. This method will flip the pin between outputting voltage and not outputting voltage. If the pin is outputting voltage, <code class="docutils literal notranslate"><span class="pre">toggle()</span></code> will stop the pin from outputting voltage and the LED will turn off.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-alternating-led-on-and-off">
+<h3>Step 3: Alternating LED on and off<a class="headerlink" href="#step-3-alternating-led-on-and-off" title="Link to this heading">#</a></h3>
+<p>When we call <code class="docutils literal notranslate"><span class="pre">toggle()</span></code> back-to-back, the pin will switch states extremely fast. However, we want the blinking of our LED to be a bit more visible. To do this, we can use the sleep function in the time module, which will delay when the next piece of code starts running. We can add this after each call of <code class="docutils literal notranslate"><span class="pre">toggle()</span></code>. <code class="docutils literal notranslate"><span class="pre">sleep(0.5)</span></code> will delay our code for 0.5 seconds.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+  <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, try running your while loop. You should see the LED turning on and off.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01/projects/1_projectname/1_blink_external_led"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../0_blink_onboard_led/instructions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Blink Onboard LED</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../2_projectname/project_overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2.2. </span>Project 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-connect-the-raspberry-pi-to-the-breadboard">Step 1: Connect the Raspberry Pi to the breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-connect-a-resistor-to-breadboard">Step 2: Connect a resistor to breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-connect-the-led-to-the-breadboard">Step 3: Connect the LED to the breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-connect-the-raspberry-pico-to-the-computer">Step 4: Connect the Raspberry Pico to the Computer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-setting-up-our-variables">Step 1: Setting up our variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-toggling-the-led-on-and-off">Step 2: Toggling the LED on and off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-alternating-led-on-and-off">Step 3: Alternating LED on and off</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

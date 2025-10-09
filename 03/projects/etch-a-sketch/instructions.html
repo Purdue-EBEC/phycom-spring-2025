@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.3. Etch-a-sketch &#8212; Purdue University EBEC Physcial Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=aa06c882" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=a8e58a58"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03/projects/etch-a-sketch/instructions';</script>
+    <script src="../../../_static/svg-inject.js?v=6590e184"></script>
+    <script src="../../../_static/svg_mathjax.js?v=40a69827"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Contributors" href="../../../Appendices/contributors.html" />
+    <link rel="prev" title="3.2. Displaying Temperature on the LCD Screen" href="../temperature_lcd/instructions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Purdue University EBEC Physcial Computing - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Purdue University EBEC Physcial Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Physical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../01/0_lab_overview.html">1. Introduction to MicroPython and the Raspberry Pi Pico</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/1_learning_materials.html">1.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../01/2_projects.html">1.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/1_projectname/project_overview.html">1.2.1. Project 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/0_blink_onboard_led/instructions.html">Blink Onboard LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/1_blink_external_led/instructions.html">Blink External LED</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/2_projectname/project_overview.html">1.2.2. Project 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/0_led_switch/instructions.html">LED and Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/1_led_button/instructions.html">LED and Button</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/projects/stop-lights/instructions.html">1.2.3. Stop Light Project</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../02/0_lab_overview.html">2. Pulse Width Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/1_learning_materials.html">2.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../02/2_projects.html">2.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/led_control/instructions.html">2.2.1. Dimming with PMW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/servo_control/instructions.html">2.2.2. Servo Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/shuffle_car/instructions.html">2.2.3. Shuffle Car</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../0_lab_overview.html">3. Lab 3</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../1_learning_materials.html">3.1. Learning Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../temperature_lcd/instructions.html">3.2. Displaying Temperature on the LCD Screen</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Etch-a-sketch</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Purdue-EBEC/entry-spring-2025/issues/new?title=Issue%20on%20page%20%2F03/projects/etch-a-sketch/instructions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Etch-a-sketch</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">3.3.1. Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">3.3.2. Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">3.3.3. Hardware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-place-the-lcd-screen-on-the-breadboard">3.3.4. Step 1: Place the LCD screen on the breadboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-connect-the-lcd-screen-to-the-breadboard">3.3.5. Step 2: Connect the LCD screen to the breadboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-the-potentiometers">3.3.6. Step 3: Add the Potentiometers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-add-the-switch-buttons">3.3.7. Step 4: Add the Switch Buttons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.3.8. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-variable-declaration">3.3.9. Step 1: Variable Declaration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-input-setup-and-states">3.3.10. Step 2: Input Setup and States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-main-loop-and-menu">3.3.11. Step 3: Main Loop and Menu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-1-creating-the-menu">Step 3.1: Creating the Menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-2-navigating-the-menu">Step 3.2: Navigating the Menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-3-handling-menu-selection">Step 3.3: Handling Menu Selection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-drawing-and-erasing">3.3.12. Step 4: Drawing and Erasing</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="etch-a-sketch">
+<h1><span class="section-number">3.3. </span>Etch-a-sketch<a class="headerlink" href="#etch-a-sketch" title="Link to this heading">#</a></h1>
+<p>In this portion of the lab, you will learn how to build a simple etch-a-sketch application using the SSD1306 LCD screen and two potentiometers.</p>
+<section id="materials">
+<h2><span class="section-number">3.3.1. </span>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>USB cable</p></li>
+<li><p>Breadboard</p></li>
+<li><p>Raspberry Pi Pico</p></li>
+<li><p>LCD Screen</p></li>
+<li><p>2 Push Buttons</p></li>
+<li><p>2 Potentiometers</p></li>
+<li><p>Wires</p></li>
+</ul>
+</section>
+<section id="getting-started">
+<h2><span class="section-number">3.3.2. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Inside your <code class="docutils literal notranslate"><span class="pre">lab3</span></code> folder, create another folder called <code class="docutils literal notranslate"><span class="pre">etch-a-sketch</span></code>.</p></li>
+<li><p>Within the <code class="docutils literal notranslate"><span class="pre">etch-a-sketch</span></code> folder, place the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file that you downloaded earlier.</p></li>
+</ul>
+</section>
+<section id="hardware">
+<h2><span class="section-number">3.3.3. </span>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h2>
+</section>
+<section id="step-1-place-the-lcd-screen-on-the-breadboard">
+<h2><span class="section-number">3.3.4. </span>Step 1: Place the LCD screen on the breadboard<a class="headerlink" href="#step-1-place-the-lcd-screen-on-the-breadboard" title="Link to this heading">#</a></h2>
+<p>Place the LCD display on the breadboard so that its pins align with four consecutive rows. Ensure that all the pins are inserted securely into the breadboard.</p>
+</section>
+<section id="step-2-connect-the-lcd-screen-to-the-breadboard">
+<h2><span class="section-number">3.3.5. </span>Step 2: Connect the LCD screen to the breadboard<a class="headerlink" href="#step-2-connect-the-lcd-screen-to-the-breadboard" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Connect the row where <strong>VCC</strong> is placed on the LCD screen to the 3.3V pin on the Pico using a wire.</p></li>
+<li><p>Connect the row where <strong>GND</strong> is placed on the LCD screen to a GND pin on the Pico using a wire.</p></li>
+<li><p>Connect the row where the <strong>SDA pin</strong> is placed on the LCD screen to <strong>GP16</strong> on the Pico using a wire.</p></li>
+<li><p>Connect the row where the <strong>SCL pin</strong> is placed on the LCD screen to <strong>GP17</strong> on the Pico using a wire.</p></li>
+</ul>
+</section>
+<section id="step-3-add-the-potentiometers">
+<h2><span class="section-number">3.3.6. </span>Step 3: Add the Potentiometers<a class="headerlink" href="#step-3-add-the-potentiometers" title="Link to this heading">#</a></h2>
+<p>You will be using the potentiometer’s ADC values to draw on the screen. The coding portion will explain more in-depth on how the potentiometers allow us to draw on the LCD screen. But for now, place the potentiometers on the breadboard, one on either side of the screen.</p>
+<ul class="simple">
+<li><p><strong>Left Potentiometer</strong>: Connect to <code class="docutils literal notranslate"><span class="pre">GP26</span></code></p></li>
+<li><p><strong>Right Potentiometer</strong>: Connect to <code class="docutils literal notranslate"><span class="pre">GP27</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file we provided uses <code class="docutils literal notranslate"><span class="pre">GP26</span></code> and <code class="docutils literal notranslate"><span class="pre">GP27</span></code> for the potentiometers ADC pins, but feel free to use any 2 ADC pins but remember to update the code in the file.</p>
+<p>Refer back to <code class="docutils literal notranslate"><span class="pre">lab2</span></code> on how to wire the potentiometers.</p>
+</section>
+<section id="step-4-add-the-switch-buttons">
+<h2><span class="section-number">3.3.7. </span>Step 4: Add the Switch Buttons<a class="headerlink" href="#step-4-add-the-switch-buttons" title="Link to this heading">#</a></h2>
+<p>The switch buttons will allow us to interact with the various menu options within the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file. Place two switch buttons on the breadboard, one on either side of the screen.</p>
+<ul class="simple">
+<li><p><strong>Option Button</strong>: Connect one side to <code class="docutils literal notranslate"><span class="pre">GP19</span></code> and the other to <code class="docutils literal notranslate"><span class="pre">GND</span></code></p></li>
+<li><p><strong>Select Button</strong>: Connect one side to <code class="docutils literal notranslate"><span class="pre">GP20</span></code> and the other to <code class="docutils literal notranslate"><span class="pre">GND</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file we provided uses <code class="docutils literal notranslate"><span class="pre">GP19</span></code> and <code class="docutils literal notranslate"><span class="pre">GP20</span></code> for the GPIO pins, but feel free to use any two GPIO pins. However, remember to update the pin numbers in the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file.</p>
+<p>Refer back to <code class="docutils literal notranslate"><span class="pre">lab1</span></code> on how to wire the switch buttons.</p>
+<p>(Add fritzing diagram here, just need 1 for the entire thing)</p>
+</section>
+<section id="code">
+<h2><span class="section-number">3.3.8. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<p>You’ve finished the hardware set up so let’s move onto coding.</p>
+</section>
+<section id="step-1-variable-declaration">
+<h2><span class="section-number">3.3.9. </span>Step 1: Variable Declaration<a class="headerlink" href="#step-1-variable-declaration" title="Link to this heading">#</a></h2>
+<p>Start by declaring two constants called <code class="docutils literal notranslate"><span class="pre">max_analog_value</span></code> and <code class="docutils literal notranslate"><span class="pre">min_analog_value</span></code>. These two values will hold the max and minimum analog value of the potentionmeters.</p>
+<p>Next, we need two constants for the <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> of the LCD screen used here which is <code class="docutils literal notranslate"><span class="pre">128x64</span></code></p>
+<p>After that, initalize the I2C object and then an instance of the <code class="docutils literal notranslate"><span class="pre">SSD1306-I2C</span></code> class from the <code class="docutils literal notranslate"><span class="pre">SSD1306.py</span></code> file.</p>
+<p>You should now be ready to handle user input and begin drawing to the screen.</p>
+</section>
+<section id="step-2-input-setup-and-states">
+<h2><span class="section-number">3.3.10. </span>Step 2: Input Setup and States<a class="headerlink" href="#step-2-input-setup-and-states" title="Link to this heading">#</a></h2>
+<p>After initallizing your LCD display, let’s initalize the various states that you’ll need to interact with the LCD screen.</p>
+<p>First, initalize your two switch buttons and two potentionmeters.</p>
+<p>Using the potentiometer readings, calculate the initial <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> position of cursor on the LCD screen. You will need to normalize the values using the <code class="docutils literal notranslate"><span class="pre">min_analog_value</span></code> and <code class="docutils literal notranslate"><span class="pre">min_analog_value</span></code> variables from step 1. Be sure to restrict the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> positions so they fit on the LCD screen. Hint, you can use the <code class="docutils literal notranslate"><span class="pre">max()</span></code> function.</p>
+<p>Next, you need to initialize a <code class="docutils literal notranslate"><span class="pre">bytearray</span></code> which is just an array of bytes to store the image data (aka what’s being shown on the screen) We will be sending this byte array to our LCD screen so it draws on the screen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mh">0x00</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="mi">64</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Afterwards, initalize the following variables to keep track of various states</p>
+<ul class="simple">
+<li><p>drawing_mode (on/off): toggles between drawing mode or menu selection</p></li>
+<li><p>eraser_on: toggles between drawing or erasing</p></li>
+<li><p>clear_sketch: clears the LCD screen</p></li>
+<li><p>quit_sketch: exits the program</p></li>
+<li><p>show_cursor: allows us to have a visual cursor on the LCD screen</p></li>
+</ul>
+<p>At this point, your screen should be blank, your cursor position should be set, and your variables ready to control the application’s behavior.</p>
+</section>
+<section id="step-3-main-loop-and-menu">
+<h2><span class="section-number">3.3.11. </span>Step 3: Main Loop and Menu<a class="headerlink" href="#step-3-main-loop-and-menu" title="Link to this heading">#</a></h2>
+<p>Wrap your program in a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">true</span></code> loop. This will keep your LCD screen on until you choose to quit.</p>
+<p>Inside the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">true</span></code> loop, you need check if the menu button has been pressed:</p>
+<section id="step-3-1-creating-the-menu">
+<h3>Step 3.1: Creating the Menu<a class="headerlink" href="#step-3-1-creating-the-menu" title="Link to this heading">#</a></h3>
+<p>Create a list of menu options that can handle the following:
+Eraser, Clear Sketch, Save, Load, Back, Quit</p>
+<p>It’s will be up to you to determine the layout of this menu, but the <code class="docutils literal notranslate"><span class="pre">fill_rect()</span></code> function might be useful to show which menu option is currently selected. Here’s an example of this function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># draw a solid rectangle from 10,10 to 117,53, colour=1</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-2-navigating-the-menu">
+<h3>Step 3.2: Navigating the Menu<a class="headerlink" href="#step-3-2-navigating-the-menu" title="Link to this heading">#</a></h3>
+<p>If the <code class="docutils literal notranslate"><span class="pre">option</span></code> button is pressed, move the selection down the menu options. Wrap around to the beginning when you reach the end.</p>
+</section>
+<section id="step-3-3-handling-menu-selection">
+<h3>Step 3.3: Handling Menu Selection<a class="headerlink" href="#step-3-3-handling-menu-selection" title="Link to this heading">#</a></h3>
+<p>When the <code class="docutils literal notranslate"><span class="pre">select</span></code> button is pressed, check which menu option is current selected.</p>
+<p>Depending on which one is currently selected, implement the following:</p>
+<ul class="simple">
+<li><p>Toggle the eraser: switch between drawing and erasing mode</p></li>
+<li><p>Clear the sketch: sets the flag, so that the screen gets cleared</p></li>
+<li><p>Save the sketch:</p>
+<ul>
+<li><p>Look for an available save slot (limit the number of saves).</p></li>
+<li><p>If no slots are available, show an error message.</p></li>
+<li><p>Otherwise, save the current image buffer to a file.</p></li>
+</ul>
+</li>
+<li><p>Load a sketch:</p>
+<ul>
+<li><p>Check for available saved files.</p></li>
+<li><p>Display a menu to pick a file to load.</p></li>
+<li><p>Load the selected file into the image byte array buffer.</p></li>
+</ul>
+</li>
+<li><p>Exit back to drawing: leaves the menu options screen</p></li>
+<li><p>Quit the application: exits the entire loop</p></li>
+</ul>
+</section>
+</section>
+<section id="step-4-drawing-and-erasing">
+<h2><span class="section-number">3.3.12. </span>Step 4: Drawing and Erasing<a class="headerlink" href="#step-4-drawing-and-erasing" title="Link to this heading">#</a></h2>
+<p>Before drawing, you need to determine if you are trying to clear a sketch or not. Remember the <code class="docutils literal notranslate"><span class="pre">image</span></code> byte array we had? That is what we will be using to send to the LCD screen to display the image on the screen.</p>
+<p>First, we should update our cursor position similar to how we got the cursor position at the start with the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> values.</p>
+<p>If your cursor has moved and you’re in drawing mode, you should update the image byte array to either draw or erase pixels.</p>
+<ul class="simple">
+<li><p>Drawing: Set specific bits in the image to 1</p></li>
+<li><p>Erasing: The opposite of drawing</p></li>
+</ul>
+<p>(Tip: You can calculate which bit to modify based on the (x, y) pixel position. Think about dividing the width into groups of 8 pixels.)</p>
+<p>Handing a 3x3 area:
+Instead of just drawing a single pixel, you may want to draw or erase a 3x3 block centered around the cursor for a thicker line. Note, this step is entirely optional but will make your sketch more visible.</p>
+<p>Rendering the frame:
+After updating the image array, use a <code class="docutils literal notranslate"><span class="pre">FrameBuffer</span></code> object to display the updated image onto the screen. Framebuffer acts like a temporary canvas and organizes the image byte array into a format the LCD screen can display.</p>
+<p>You can create a framebuffer object by passing in a byte array, width, height, and the format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_HLSB</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After creating the framebuffer, you can draw it onto the LCD screen using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># draws the image starting at 0,0 of the LCD screen</span>
+</pre></div>
+</div>
+<p>Cursor Display:
+If you want to show a cursor on the screen, you can draw it at the updated x and y position after rendering the frame.</p>
+<p>Don’t forget to show everything at the end.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./03/projects/etch-a-sketch"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../temperature_lcd/instructions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Displaying Temperature on the LCD Screen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../Appendices/contributors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contributors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">3.3.1. Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">3.3.2. Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">3.3.3. Hardware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-place-the-lcd-screen-on-the-breadboard">3.3.4. Step 1: Place the LCD screen on the breadboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-connect-the-lcd-screen-to-the-breadboard">3.3.5. Step 2: Connect the LCD screen to the breadboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-the-potentiometers">3.3.6. Step 3: Add the Potentiometers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-add-the-switch-buttons">3.3.7. Step 4: Add the Switch Buttons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.3.8. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-variable-declaration">3.3.9. Step 1: Variable Declaration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-input-setup-and-states">3.3.10. Step 2: Input Setup and States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-main-loop-and-menu">3.3.11. Step 3: Main Loop and Menu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-1-creating-the-menu">Step 3.1: Creating the Menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-2-navigating-the-menu">Step 3.2: Navigating the Menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-3-handling-menu-selection">Step 3.3: Handling Menu Selection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-drawing-and-erasing">3.3.12. Step 4: Drawing and Erasing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

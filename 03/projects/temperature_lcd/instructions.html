@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.2. Displaying Temperature on the LCD Screen &#8212; Purdue University EBEC Physcial Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=aa06c882" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=a8e58a58"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03/projects/temperature_lcd/instructions';</script>
+    <script src="../../../_static/svg-inject.js?v=6590e184"></script>
+    <script src="../../../_static/svg_mathjax.js?v=40a69827"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.3. Etch-a-sketch" href="../etch-a-sketch/instructions.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="../../2_projects.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Purdue University EBEC Physcial Computing - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Purdue University EBEC Physcial Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Physical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../01/0_lab_overview.html">1. Introduction to MicroPython and the Raspberry Pi Pico</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/1_learning_materials.html">1.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../01/2_projects.html">1.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/1_projectname/project_overview.html">1.2.1. Project 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/0_blink_onboard_led/instructions.html">Blink Onboard LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/1_blink_external_led/instructions.html">Blink External LED</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/2_projectname/project_overview.html">1.2.2. Project 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/0_led_switch/instructions.html">LED and Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/1_led_button/instructions.html">LED and Button</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/projects/stop-lights/instructions.html">1.2.3. Stop Light Project</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../02/0_lab_overview.html">2. Pulse Width Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/1_learning_materials.html">2.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../02/2_projects.html">2.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/led_control/instructions.html">2.2.1. Dimming with PMW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/servo_control/instructions.html">2.2.2. Servo Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/shuffle_car/instructions.html">2.2.3. Shuffle Car</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../0_lab_overview.html">3. Lab 3</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../1_learning_materials.html">3.1. Learning Materials</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.2. Displaying Temperature on the LCD Screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../etch-a-sketch/instructions.html">3.3. Etch-a-sketch</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Purdue-EBEC/entry-spring-2025/issues/new?title=Issue%20on%20page%20%2F03/projects/temperature_lcd/instructions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Displaying Temperature on the LCD Screen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">3.2.1. Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">3.2.2. Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">3.2.3. Hardware</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-connect-the-lcd-display-to-the-breadboard">Step 1: Connect the LCD display to the breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-locate-the-pins">Step 1: Locate the Pins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-connect-vcc-and-ground">Step 2: Connect VCC and Ground</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-connect-the-data-pins">Step 3: Connect the Data Pins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-connect-the-raspberry-pi-pico-to-your-computer">Step 4: Connect the Raspberry Pi Pico to Your Computer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.2.4. Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-adding-nescessary-imports">Step 1: Adding nescessary imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initalize-i2c-communication">Step 2: Initalize I2C Communication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-initalize-the-lcd-screen">Step 3: Initalize the LCD Screen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-reusing-the-temperature-sensing-function">Step 4: Reusing the Temperature Sensing Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-displaying-the-temperature">Step 5: Displaying the Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-running-the-program">Step 6: Running the Program</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="displaying-temperature-on-the-lcd-screen">
+<h1><span class="section-number">3.2. </span>Displaying Temperature on the LCD Screen<a class="headerlink" href="#displaying-temperature-on-the-lcd-screen" title="Link to this heading">#</a></h1>
+<p>In this lab, you will learn about the basics of the SSD1306 LCD screen and how to display the data from the temperature sensor from the Pico to the LCD screen.</p>
+<section id="materials">
+<h2><span class="section-number">3.2.1. </span>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>USB cable</p></li>
+<li><p>Breadboard</p></li>
+<li><p>Raspberry Pi Pico</p></li>
+<li><p>LCD screen</p></li>
+<li><p>Wires</p></li>
+</ul>
+</section>
+<section id="getting-started">
+<h2><span class="section-number">3.2.2. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>Note: might have to add something about getting the <a class="reference external" href="http://ssd1306.py">ssd1306.py</a> file downloaded from somewhere.</p>
+<ul class="simple">
+<li><p>Open <strong>VSCode</strong>, and open your <strong>Phyical-Computing</strong> project.</p></li>
+<li><p>Open your <code class="docutils literal notranslate"><span class="pre">lab3</span></code> file and create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file where you will write your code for this lab.</p></li>
+</ul>
+</section>
+<section id="hardware">
+<h2><span class="section-number">3.2.3. </span>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h2>
+<section id="step-1-connect-the-lcd-display-to-the-breadboard">
+<h3>Step 1: Connect the LCD display to the breadboard<a class="headerlink" href="#step-1-connect-the-lcd-display-to-the-breadboard" title="Link to this heading">#</a></h3>
+<p>Place the LCD display on the breadboard so that its pins align with four consecutive rows. Ensure that all the pins are inserted securely into the breadboard.</p>
+<p>(insert photo/ fritzing diagram)</p>
+</section>
+<section id="step-1-locate-the-pins">
+<h3>Step 1: Locate the Pins<a class="headerlink" href="#step-1-locate-the-pins" title="Link to this heading">#</a></h3>
+<p>Locate the <strong>4 pins</strong> on your LCD screen. They should be labeled as follows:</p>
+<ul class="simple">
+<li><p><strong>VCC:</strong> 3.3V (if needed, refer to previous labs on how to connect)</p></li>
+<li><p><strong>GND:</strong> Ground (if needed, refer to previous labs on how to connect)</p></li>
+<li><p><strong>SDA:</strong> Serial Data Line</p></li>
+<li><p><strong>SCL:</strong> Serial Clock Line</p></li>
+</ul>
+</section>
+<section id="step-2-connect-vcc-and-ground">
+<h3>Step 2: Connect VCC and Ground<a class="headerlink" href="#step-2-connect-vcc-and-ground" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Connect the row where <strong>VCC</strong> is placed on the LCD screen to the 3.3V pin on the Pico using a wire.</p></li>
+<li><p>Connect the row where <strong>GND</strong> is placed on the LCD screen to a GND pin on the Pico using a wire.</p></li>
+</ul>
+<p>(insert photo/ fritzing diagram)</p>
+</section>
+<section id="step-3-connect-the-data-pins">
+<h3>Step 3: Connect the Data Pins<a class="headerlink" href="#step-3-connect-the-data-pins" title="Link to this heading">#</a></h3>
+<p>This example uses <strong>ground pin 16 for SDA</strong> and <strong>ground pin 17 for SCL</strong>, but you may choose any pair of SDA and SCL pins on the pico. Refer to the <a class="reference external" href="https://icircuit.net/wp-content/uploads/2024/12/image-13.png">GPIO Pin diagram</a> for where the SCL and SDA pins are located.</p>
+<ul class="simple">
+<li><p>Connect the row where the <strong>SDA pin</strong> is placed on the LCD screen to <strong>GP16</strong> on the Pico using a wire.</p></li>
+<li><p>Connect the row where the <strong>SCL pin</strong> is placed on the LCD screen to <strong>GP17</strong> on the Pico using a wire.</p></li>
+</ul>
+<p>(insert photo/fritzing diagram)</p>
+</section>
+<section id="step-4-connect-the-raspberry-pi-pico-to-your-computer">
+<h3>Step 4: Connect the Raspberry Pi Pico to Your Computer<a class="headerlink" href="#step-4-connect-the-raspberry-pi-pico-to-your-computer" title="Link to this heading">#</a></h3>
+<p>Connect your <strong>Raspberry Pi Pico</strong> to your computer using the USB cable <strong>provided in your lab kit</strong>. While plugging in the device, <strong>hold down the BOOTSEL button</strong>. <strong>Drag and drop</strong> the <strong>MicroPython UF2 file</strong> into the device folder of the Pico.</p>
+<p>Now everything should be connected, so let’s move on to the coding portion.</p>
+</section>
+</section>
+<section id="code">
+<h2><span class="section-number">3.2.4. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<section id="step-1-adding-nescessary-imports">
+<h3>Step 1: Adding nescessary imports<a class="headerlink" href="#step-1-adding-nescessary-imports" title="Link to this heading">#</a></h3>
+<p>Import the <strong>machine</strong> and <strong>time</strong> libraries. The ADC and Pin modules should be familiar from previous labs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+<p>The <strong>I2C</strong> module allows us to establish I2C communication from our pico.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SSD1306_I2C</span></code> class allows us to interact with the LCD screen without having to deal with memory addresses or memory management. The <code class="docutils literal notranslate"><span class="pre">SSD1306_I2C</span></code>class is built on top of the <code class="docutils literal notranslate"><span class="pre">SSD1306</span></code> class, which handles most of the application logic for interacting with the screen like turning it on and off. The two functions defined within the <code class="docutils literal notranslate"><span class="pre">SSD1306_I2C</span></code>class are</p>
+<p><code class="docutils literal notranslate"><span class="pre">write_cmd</span></code>: sends a command to the screen</p>
+<p><code class="docutils literal notranslate"><span class="pre">write_data</span></code>: writes data from the buffer to the screen. This is how stuff gets displayed on the screen.</p>
+</section>
+<section id="step-2-initalize-i2c-communication">
+<h3>Step 2: Initalize I2C Communication<a class="headerlink" href="#step-2-initalize-i2c-communication" title="Link to this heading">#</a></h3>
+<p>Initialize an I2C object called <code class="docutils literal notranslate"><span class="pre">i2c</span></code> with the following constructor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>id:</strong> identifies a particular I2C peripheral. Allowed values for depend on the particular port/board</p></li>
+<li><p><strong>scl:</strong> a pin object specifying the pin to use for SCL.</p></li>
+<li><p><strong>sda:</strong> a pin object specifying the pin to use for SDA.</p></li>
+<li><p><strong>freq:</strong> an integer which sets the maximum frequency for SCL.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: change the pin numbers to the SDA and SCL pins you are using if your wiring was different.</p>
+</div></blockquote>
+</section>
+<section id="step-3-initalize-the-lcd-screen">
+<h3>Step 3: Initalize the LCD Screen<a class="headerlink" href="#step-3-initalize-the-lcd-screen" title="Link to this heading">#</a></h3>
+<p>Now you’re going to create a variable called <code class="docutils literal notranslate"><span class="pre">oled</span></code> which is an instance of SSD1306_I2C class from the <code class="docutils literal notranslate"><span class="pre">ssd1306.py</span></code> by doing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>width:</strong> The width of the display in pixels (128 for this screen).</p></li>
+<li><p><strong>height:</strong> The height of the display in pixels (64 for this screen).</p></li>
+<li><p><strong>i2c:</strong> The I2C object you initialized in the previous step.</p></li>
+</ul>
+</section>
+<section id="step-4-reusing-the-temperature-sensing-function">
+<h3>Step 4: Reusing the Temperature Sensing Function<a class="headerlink" href="#step-4-reusing-the-temperature-sensing-function" title="Link to this heading">#</a></h3>
+<p>Next, we want to reuse the <code class="docutils literal notranslate"><span class="pre">get_temperature()</span></code> function from <code class="docutils literal notranslate"><span class="pre">Lab3</span> <span class="pre">Project</span> <span class="pre">1</span></code> that returns the reading of the temperature sensor on the Pico. We will be calling this function to display the temperature sensor data on the LCD screen.</p>
+</section>
+<section id="step-5-displaying-the-temperature">
+<h3>Step 5: Displaying the Temperature<a class="headerlink" href="#step-5-displaying-the-temperature" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Inside a while True loop, add the following steps.</p></li>
+<li><p>Clear the display to reset any previous text using:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Display the label “Temperature:” using the oled.text method:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Temperature: &quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>text:</strong> The text you want to display on the LCD screen.</p></li>
+<li><p><strong>x-coordinate:</strong> The x-coordinate of the text you want to display.</p></li>
+<li><p><strong>y-coordinate</strong> The y-coordinate of the text you want to display.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: this x and y coordinates should not exceed <code class="docutils literal notranslate"><span class="pre">128x64</span></code> so you can see the text on the screen.</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Call your <code class="docutils literal notranslate"><span class="pre">get_temperature()</span></code> function and store the result in a variable called <code class="docutils literal notranslate"><span class="pre">temp</span></code>.</p></li>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">oled.text</span></code> and place the return value of the temperature function <code class="docutils literal notranslate"><span class="pre">temp</span></code> and adjust the y-coordinate to prevent text overlap from the previous label.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">oled.show()</span></code> to refresh the LCD display with the new content.</p></li>
+<li><p>Add a small delay between each loop iteration.</p></li>
+</ol>
+</section>
+<section id="step-6-running-the-program">
+<h3>Step 6: Running the Program<a class="headerlink" href="#step-6-running-the-program" title="Link to this heading">#</a></h3>
+<p>In VSCode, locate the <strong>Run</strong> button in the <strong>bottom taskbar</strong> and click <strong>Run</strong> to execute the code on your Raspberry Pi Pico. You can <strong>stop</strong> or <strong>reset</strong> the program at anytime using the controls in the bottom taskbar or by pressing CTRL+C on your computer (CMD+C on Mac).</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./03/projects/temperature_lcd"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../2_projects.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../etch-a-sketch/instructions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Etch-a-sketch</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">3.2.1. Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">3.2.2. Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">3.2.3. Hardware</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-connect-the-lcd-display-to-the-breadboard">Step 1: Connect the LCD display to the breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-locate-the-pins">Step 1: Locate the Pins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-connect-vcc-and-ground">Step 2: Connect VCC and Ground</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-connect-the-data-pins">Step 3: Connect the Data Pins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-connect-the-raspberry-pi-pico-to-your-computer">Step 4: Connect the Raspberry Pi Pico to Your Computer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.2.4. Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-adding-nescessary-imports">Step 1: Adding nescessary imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initalize-i2c-communication">Step 2: Initalize I2C Communication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-initalize-the-lcd-screen">Step 3: Initalize the LCD Screen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-reusing-the-temperature-sensing-function">Step 4: Reusing the Temperature Sensing Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-displaying-the-temperature">Step 5: Displaying the Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-running-the-program">Step 6: Running the Program</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
