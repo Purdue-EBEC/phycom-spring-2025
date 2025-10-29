@@ -300,7 +300,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -316,6 +318,24 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-circuit-and-breadboard-setup">Step 1: Circuit and Breadboard Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-code-setup">Step 2: Code Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-moving-forward-and-backward">Step 3: Moving forward and backward</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-resting-the-servos">Step 4: Resting the servos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-turning-left-and-right">Step 5: Turning left and right</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-running-the-program">Step 6: Running the program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-adding-a-battery">Step 7: Adding a battery</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -327,6 +347,132 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="shuffle-car">
 <h1><span class="section-number">2.2.3. </span>Shuffle Car<a class="headerlink" href="#shuffle-car" title="Link to this heading">#</a></h1>
+<section id="materials">
+<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>USB cable</p></li>
+<li><p>Breadboard</p></li>
+<li><p>Raspberry Pi Pico</p></li>
+<li><p>FS90R micro servo (x2)</p></li>
+<li><p>Wheels (x2)</p></li>
+<li><p>Battery (WIP)</p></li>
+<li><p>Kit Wires</p></li>
+</ul>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<p>We will use PWM to control 2 wheels to make a shuffle car out of our breadboard.</p>
+<section id="step-1-circuit-and-breadboard-setup">
+<h3>Step 1: Circuit and Breadboard Setup<a class="headerlink" href="#step-1-circuit-and-breadboard-setup" title="Link to this heading">#</a></h3>
+<p>Review the documentation of the FS90R <a class="reference external" href="https://www.pololu.com/file/0J1867/FS90R.pdf">here</a> and the Pico <a class="reference external" href="https://icircuit.net/wp-content/uploads/2024/12/image-13.png">here</a>.</p>
+<p>Using what we did in the previous lab as reference, connect 2 servos to the Pico. Then, attach a wheel to each of the servos. You are ready to code!</p>
+<p>Example of breadboard:
+<img alt="visual of completed circuit with two servos" src="../../../_images/shuffle_car_bb.svg" /></p>
+</section>
+<section id="step-2-code-setup">
+<h3>Step 2: Code Setup<a class="headerlink" href="#step-2-code-setup" title="Link to this heading">#</a></h3>
+<p>Open <code class="docutils literal notranslate"><span class="pre">main.py</span></code> and import the required libraries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+</pre></div>
+</div>
+<p>Set up PWM on the GPIO pins you chose. Look back at the <a class="reference external" href="https://www.pololu.com/file/0J1867/FS90R.pdf">servo documentation</a> to find the operating frequency of the servo.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left_servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">XX</span><span class="p">))</span>
+<span class="n">left_servo</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">right_servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">XX</span><span class="p">))</span>
+<span class="n">right_servo</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-moving-forward-and-backward">
+<h3>Step 3: Moving forward and backward<a class="headerlink" href="#step-3-moving-forward-and-backward" title="Link to this heading">#</a></h3>
+<p>Now, write a function called <code class="docutils literal notranslate"><span class="pre">forward()</span></code> with an integer input <code class="docutils literal notranslate"><span class="pre">n</span></code> that moves the breadboard forward for <code class="docutils literal notranslate"><span class="pre">n</span></code> seconds with rotations of the servos. Reference the previous lab on how to set duty values and servo positions.
+Hint: to move forward, the left and right wheels need to rotate in different directions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="n">left_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">right_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">T_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># set duty values and set servo positions</span>
+</pre></div>
+</div>
+<p>Now, write a function called <code class="docutils literal notranslate"><span class="pre">backward()</span></code> with an integer input <code class="docutils literal notranslate"><span class="pre">n</span></code> that moves the breadboard backward for <code class="docutils literal notranslate"><span class="pre">n</span></code> seconds with rotations of the servos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="n">left_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">right_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">T_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># set duty values and set servo positions</span>
+</pre></div>
+</div>
+<p>Now, try out your code by writing the following in <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="n">forward</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">rest</span><span class="p">()</span>
+  <span class="n">backward</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">rest</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can and should test your code before moving on.</p>
+</section>
+<section id="step-4-resting-the-servos">
+<h3>Step 4: Resting the servos<a class="headerlink" href="#step-4-resting-the-servos" title="Link to this heading">#</a></h3>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">rest()</span></code> that will allow the servos to rest or stop rotating, according to the <a class="reference external" href="https://www.pololu.com/file/0J1867/FS90R.pdf">servo documentation</a>. This function will help you stop your shuffle car!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rest</span><span class="p">():</span>
+<span class="n">left_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">right_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">T_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># set duty values and set servo positions</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-turning-left-and-right">
+<h3>Step 5: Turning left and right<a class="headerlink" href="#step-5-turning-left-and-right" title="Link to this heading">#</a></h3>
+<p>Now, write a function called <code class="docutils literal notranslate"><span class="pre">left()</span></code> with an integer input <code class="docutils literal notranslate"><span class="pre">n</span></code> that will move the breadboard to the left for <code class="docutils literal notranslate"><span class="pre">n</span></code> seconds.
+Hint: to move left, you want the right wheel to go forward.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">left</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="n">left_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">right_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">T_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># set duty values and set servo positions</span>
+</pre></div>
+</div>
+<p>Now, write a function called <code class="docutils literal notranslate"><span class="pre">right()</span></code> with an integer input <code class="docutils literal notranslate"><span class="pre">n</span></code> that will move the breadboard to the right for <code class="docutils literal notranslate"><span class="pre">n</span></code> seconds.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">right</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="n">left_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">right_T_on</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="n">T_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># set duty values and set servo positions</span>
+</pre></div>
+</div>
+<p>Test your code by using this loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="n">forward</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">rest</span><span class="p">()</span>
+  <span class="n">backward</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">rest</span><span class="p">()</span>
+
+  <span class="n">left</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">rest</span><span class="p">()</span>
+  <span class="n">right</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">rest</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-6-running-the-program">
+<h3>Step 6: Running the program<a class="headerlink" href="#step-6-running-the-program" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Run the completed <a class="reference external" href="http://main.py">main.py</a> file and test that the breadboard is moving as expected.</p></li>
+</ul>
+</section>
+<section id="step-7-adding-a-battery">
+<h3>Step 7: Adding a battery<a class="headerlink" href="#step-7-adding-a-battery" title="Link to this heading">#</a></h3>
+<p>WIP.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -383,6 +529,32 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-circuit-and-breadboard-setup">Step 1: Circuit and Breadboard Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-code-setup">Step 2: Code Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-moving-forward-and-backward">Step 3: Moving forward and backward</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-resting-the-servos">Step 4: Resting the servos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-turning-left-and-right">Step 5: Turning left and right</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-running-the-program">Step 6: Running the program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-adding-a-battery">Step 7: Adding a battery</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
