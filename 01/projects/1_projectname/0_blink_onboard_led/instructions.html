@@ -30,11 +30,11 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=aa06c882" />
@@ -50,11 +50,11 @@
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -62,8 +62,8 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '01/projects/1_projectname/0_blink_onboard_led/instructions';</script>
-    <script src="../../../../_static/svg-inject.js?v=6590e184"></script>
     <script src="../../../../_static/svg_mathjax.js?v=40a69827"></script>
+    <script src="../../../../_static/svg-inject.js?v=6590e184"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Blink External LED" href="../1_blink_external_led/instructions.html" />
@@ -208,10 +208,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../03/projects/etch-a-sketch/instructions.html">3.3. Etch-a-sketch</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../04/0_lab_overview.html">4. Lab 4</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../04/1_learning_materials.html">4.2. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../04/2_projects.html">4.3. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../04/projects/distance_lcd/instructions.html">4.3.2. Distance Sensor Display</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../Appendices/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendices/1_kit_components/kit_components.html">Kit Components</a></li>
 </ul>
 
     </div>
@@ -277,7 +286,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -301,7 +310,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -327,9 +336,9 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-vs-code">Step 1: Install VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-python-and-the-raspberry-pi-extensions"><strong>Step 2: Install Python and the Raspberry Pi Extensions</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-download-the-micropython-firmware"><strong>Step 3: Download the MicroPython Firmware</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-set-up-a-new-project"><strong>Step 4: Set Up a New Project</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-python-and-the-raspberry-pi-extensions">Step 2: Install Python and the Raspberry Pi Extensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-download-the-micropython-firmware">Step 3: Download the MicroPython Firmware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-organizing-a-folder-for-the-class">Step 4: Organizing a folder for the class</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a><ul class="nav section-nav flex-column">
@@ -339,11 +348,11 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-adding-nescessary-imports">Step 1: Adding nescessary imports</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initalize-led">Step 2: Initalize LED</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-toggling-the-led">Step 3: Toggling the LED</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-alternating-the-led-between-on-and-off">Step 4: Alternating the LED between on and off</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-running-the-program"><strong>Step 5: Running the Program</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-add-necessary-imports">Step 1: Add necessary imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initialize-the-led">Step 2: Initialize the LED</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-toggle-the-led">Step 3: Toggle the LED</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-add-a-delay">Step 4: Add a delay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-run-the-program">Step 5: Run the program</a></li>
 </ul>
 </li>
 </ul>
@@ -359,7 +368,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="blink-onboard-led">
 <h1>Blink Onboard LED<a class="headerlink" href="#blink-onboard-led" title="Link to this heading">#</a></h1>
-<p>In this portion of the lab, you will learn how to blink the onboard LED of the Raspberry Pi Pico.</p>
+<p>In this portion of the lab, you will learn how to blink the onboard LED of the
+Raspberry Pi Pico.</p>
 <section id="materials">
 <h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -377,30 +387,36 @@
 </ul>
 </section>
 <section id="step-2-install-python-and-the-raspberry-pi-extensions">
-<h3><strong>Step 2: Install Python and the Raspberry Pi Extensions</strong><a class="headerlink" href="#step-2-install-python-and-the-raspberry-pi-extensions" title="Link to this heading">#</a></h3>
+<h3>Step 2: Install Python and the Raspberry Pi Extensions<a class="headerlink" href="#step-2-install-python-and-the-raspberry-pi-extensions" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Open VSCode and install the <strong><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=paulober.pico-w-go">MicroPython</a></strong> and <strong><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a></strong> extensions from the Extensions tab.</p></li>
-<li><p>Paste the following extensions ids in the search-bar and download the first extension that shows up</p></li>
+<li><p>Open VSCode and install the
+<strong><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=paulober.pico-w-go">MicroPico</a></strong>
+and <strong><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a></strong>
+extensions from the Extensions tab.</p></li>
+<li><p>Paste the following extension IDs in the search bar and download the first
+extension that shows up.</p></li>
 </ul>
 <p><strong>Python</strong>: ms-python.python</p>
 <p><strong>MicroPico</strong>: paulober.pico-w-go</p>
 <p><img alt="3" src="../../../../_images/python.jpg" /> <img alt="4" src="../../../../_images/micropico.jpg" /></p>
 </section>
 <section id="step-3-download-the-micropython-firmware">
-<h3><strong>Step 3: Download the MicroPython Firmware</strong><a class="headerlink" href="#step-3-download-the-micropython-firmware" title="Link to this heading">#</a></h3>
+<h3>Step 3: Download the MicroPython Firmware<a class="headerlink" href="#step-3-download-the-micropython-firmware" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Visit the <a class="reference external" href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">Raspberry Pi website</a> and download the latest <strong>MicroPython UF2 file</strong> for the Raspberry Pi Pico.</p></li>
-<li><p>The correct MicroPython UF2 file should say <strong>Pico</strong>.</p></li>
+<li><p>Visit the <a class="reference external" href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">Raspberry Pi website</a>
+and download the latest <strong>MicroPython UF2 file</strong> for the Raspberry Pi Pico.</p></li>
+<li><p>The correct MicroPython UF2 file should just say <strong>“Pico”</strong>.</p></li>
 </ul>
 <p><img alt="5" src="../../../../_images/pico_firmware.jpg" /></p>
 </section>
-<section id="step-4-set-up-a-new-project">
-<h3><strong>Step 4: Set Up a New Project</strong><a class="headerlink" href="#step-4-set-up-a-new-project" title="Link to this heading">#</a></h3>
+<section id="step-4-organizing-a-folder-for-the-class">
+<h3>Step 4: Organizing a folder for the class<a class="headerlink" href="#step-4-organizing-a-folder-for-the-class" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Open <strong>VSCode</strong>, <strong>create a new project</strong> called <strong>Phyical-Computing</strong> and open it.</p></li>
+<li><p>Open <strong>VSCode</strong>, <strong>create a new folder</strong> called <strong>Physical-Computing</strong> and open it.</p></li>
 <li><p>Within this project, create a new folder called <code class="docutils literal notranslate"><span class="pre">lab1</span></code>.</p></li>
 <li><p>Inside the <code class="docutils literal notranslate"><span class="pre">lab1</span></code> folder, create another folder called <code class="docutils literal notranslate"><span class="pre">blinking_internal_led</span></code>.</p></li>
-<li><p>Within the <code class="docutils literal notranslate"><span class="pre">blinking_internal_led</span></code> folder, create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file where you will write your code for this lab.</p></li>
+<li><p>Within the <code class="docutils literal notranslate"><span class="pre">blinking_internal_led</span></code> folder, create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file where you will
+write your code for this lab.</p></li>
 </ul>
 </section>
 </section>
@@ -408,67 +424,89 @@
 <h2>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h2>
 <section id="step-1-connect-the-raspberry-pi-to-the-breadboard">
 <h3>Step 1: Connect the Raspberry Pi to the breadboard<a class="headerlink" href="#step-1-connect-the-raspberry-pi-to-the-breadboard" title="Link to this heading">#</a></h3>
-<p>The Raspberry Pi Pico can emit voltage into the breadboard. This is why we must connect the Pico to the breadboard so that we are able to receive voltage. To add our Raspberry Pi Pico to the breadboard, have the raspberry symbol face up and insert the headers into the holes of the breadboard. We want to ensure that the Pico doesn’t touch the +/- rails (the holes next to the blue and red lines at the edge of the breadboard).</p>
-<p>Look at the image below for reference of what the setup should look like.</p>
+<p>The Raspberry Pi Pico outputs voltage through its GPIO pins.  To connect the
+Pico to the breadboard, orient it with the Raspberry Pi logo face up and press
+the headers into the breadboard holes.  Make sure the Pico does not overlap
+the +/- power rails (the rows beside the red and blue lines at the board edge).</p>
+<p>Look at the image below for reference.</p>
 <p><img alt="1" src="../../../../_images/base_board.svg" /></p>
 </section>
 <section id="step-2-connect-the-raspberry-pi-pico-to-your-computer">
 <h3>Step 2: Connect the Raspberry Pi Pico to Your Computer<a class="headerlink" href="#step-2-connect-the-raspberry-pi-pico-to-your-computer" title="Link to this heading">#</a></h3>
-<p>Connect your <strong>Raspberry Pi Pico</strong> to your computer using the USB cable <strong>provided in your lab kit</strong>. While plugging in the device, <strong>hold down the BOOTSEL button</strong>.</p>
+<p>Connect your <strong>Raspberry Pi Pico</strong> to your computer using the USB cable
+<strong>provided in your lab kit</strong>.  While plugging in the device, hold down the
+BOOTSEL button until a popup appears recognizing a new device named “RP1-RP2”.</p>
 <p><img alt="2" src="../../../../_images/boot_sel.jpg" /></p>
 <p>Your computer should recognize the Pico as a new device.</p>
 </section>
 <section id="step-3-install-micropython-on-the-pico">
 <h3>Step 3: Install MicroPython on the Pico<a class="headerlink" href="#step-3-install-micropython-on-the-pico" title="Link to this heading">#</a></h3>
-<p>Locate the downloaded <strong>MicroPython UF2 file</strong> from <code class="docutils literal notranslate"><span class="pre">Getting</span> <span class="pre">Started</span> <span class="pre">Step</span> <span class="pre">3</span></code>
+<p>Locate the downloaded <strong>MicroPython UF2 file</strong> from Getting Started Step 3.
 <strong>Drag and drop</strong> the file into the device folder of the Pico.</p>
-<p>Everything should now be connected and your Pico should be able to run MicroPython, so let’s move on to the coding portion!</p>
+<p>Everything should now be connected and your Pico should be able to run
+MicroPython, so let’s move on to the coding portion!</p>
 </section>
 </section>
 <section id="code">
 <h2>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
-<section id="step-1-adding-nescessary-imports">
-<h3>Step 1: Adding nescessary imports<a class="headerlink" href="#step-1-adding-nescessary-imports" title="Link to this heading">#</a></h3>
-<p>Import the <strong>machine</strong> and <strong>time</strong> libraries. The <strong>machine</strong> library allows us to interact with the GPIO pins on the Pico through the Pin class. The <strong>time</strong> libarary allows us to add a delay between each iteration of the loop using a sleep delay.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<section id="step-1-add-necessary-imports">
+<h3>Step 1: Add necessary imports<a class="headerlink" href="#step-1-add-necessary-imports" title="Link to this heading">#</a></h3>
+<p>Import the <code class="docutils literal notranslate"><span class="pre">machine</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code> libraries.  The <code class="docutils literal notranslate"><span class="pre">machine</span></code> library lets us
+interact with the GPIO pins on the Pico through the <code class="docutils literal notranslate"><span class="pre">Pin</span></code> class.  The <code class="docutils literal notranslate"><span class="pre">time</span></code>
+library lets us add a delay between loop iterations using <code class="docutils literal notranslate"><span class="pre">sleep</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 </pre></div>
 </div>
-<p>GPIO stands for General-Purpose Input/Output. These pins are a <strong>physical interface between the Raspberry Pi and the outside world</strong>. The GPIO pins allow the Raspberry Pi to <strong>control</strong> and <strong>monitor</strong> the outside world by being connected to electronic circuits. The Pi is able to control LEDs, turning them on or off, run motors, and many other things. It’s also able to detect whether a switch has been pressed, the temperature, and light. There are 40 pins on the Raspberry Pi Pico and you can refer to the GPIO Pin diagram <a class="reference external" href="https://icircuit.net/wp-content/uploads/2024/12/image-13.png">here</a> to learn more.</p>
+<p>GPIO stands for General-Purpose Input/Output.  These pins are a <strong>physical
+interface between the Raspberry Pi Pico and the outside world</strong>.  They allow
+the Pico to <strong>control</strong> and <strong>monitor</strong> external circuits – turning LEDs on
+or off, running motors, reading switches, and more.  The Pico has 40 pins;
+refer to the <a class="reference external" href="https://icircuit.net/wp-content/uploads/2024/12/image-13.png">GPIO pin diagram</a>
+for details.</p>
 </section>
-<section id="step-2-initalize-led">
-<h3>Step 2: Initalize LED<a class="headerlink" href="#step-2-initalize-led" title="Link to this heading">#</a></h3>
-<p>In order to be able to light the onboard LED, we need to set up a variable which references the output pin of the onboard LED. The onboard LED pin is connected to GP (Ground Pin) 25.</p>
-<p>Initialize the LED by doing:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Initialize the built-in LED as an output</span>
+<section id="step-2-initialize-the-led">
+<h3>Step 2: Initialize the LED<a class="headerlink" href="#step-2-initialize-the-led" title="Link to this heading">#</a></h3>
+<p>To control the onboard LED, create a variable that references its GPIO pin.
+The onboard LED is connected to GP25.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LED_PIN</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># GP25 -- onboard LED</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this lab, the built-in LED pin is connected to GP25, so the first argument we input is 25. This same concept can be applied to other pins that you will be using in future labs.</p>
+<p>The first argument to <code class="docutils literal notranslate"><span class="pre">Pin</span></code> is the pin number; <code class="docutils literal notranslate"><span class="pre">Pin.OUT</span></code> configures it as an
+output.  This same pattern applies to any GPIO pin you use in future labs.</p>
 </section>
-<section id="step-3-toggling-the-led">
-<h3>Step 3: Toggling the LED<a class="headerlink" href="#step-3-toggling-the-led" title="Link to this heading">#</a></h3>
-<p>We want our code to <strong>repeatedly</strong> turn the onboard LED on and off, so place the following code inside a while True loop which will cause the loop to run until you stop it.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span> <span class="c1"># toggles between on and off state</span>
+<section id="step-3-toggle-the-led">
+<h3>Step 3: Toggle the LED<a class="headerlink" href="#step-3-toggle-the-led" title="Link to this heading">#</a></h3>
+<p>To <strong>repeatedly</strong> turn the LED on and off, place the toggle call inside a
+<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code> loop, which runs until you stop it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>  <span class="c1"># switches between on and off</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">toggle()</span></code> method will flip the pin between outputting voltage and not outputting voltage. If the pin is outputting voltage, <code class="docutils literal notranslate"><span class="pre">toggle()</span></code> will stop the pin from outputting voltage and the LED will turn off.</p>
+<p><code class="docutils literal notranslate"><span class="pre">toggle()</span></code> flips the pin between outputting voltage (LED on) and not outputting
+voltage (LED off).</p>
 </section>
-<section id="step-4-alternating-the-led-between-on-and-off">
-<h3>Step 4: Alternating the LED between on and off<a class="headerlink" href="#step-4-alternating-the-led-between-on-and-off" title="Link to this heading">#</a></h3>
-<p>When we call these two functions back-to-back, they will switch states extremely fast. However, we want ours to be a bit more visible. To do this, we can use the sleep function in the time module, which will delay when the next iteration of the loop starts running. We can add this after <code class="docutils literal notranslate"><span class="pre">led.toggle()</span></code>.</p>
+<section id="step-4-add-a-delay">
+<h3>Step 4: Add a delay<a class="headerlink" href="#step-4-add-a-delay" title="Link to this heading">#</a></h3>
+<p>Toggling back-to-back switches states too fast to see.  Add a <code class="docutils literal notranslate"><span class="pre">sleep</span></code> call so
+each state is visible for half a second:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-  <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
-  <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># adds a 0.5 second delay</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 0.5-second pause between toggles</span>
 </pre></div>
 </div>
 </section>
-<section id="step-5-running-the-program">
-<h3><strong>Step 5: Running the Program</strong><a class="headerlink" href="#step-5-running-the-program" title="Link to this heading">#</a></h3>
-<p>In VSCode, switch to using the MicroPico vREPL (from powershell or bash) to connect to your Raspberry Pi Pico.</p>
-<p><img alt="6" src="../../../../_images/terminal_micropico.png" /></p>
-<p>Then, your terminal should display this.</p>
+<section id="step-5-run-the-program">
+<h3>Step 5: Run the program<a class="headerlink" href="#step-5-run-the-program" title="Link to this heading">#</a></h3>
+<p>In VSCode, switch to using the MicroPico vREPL (from PowerShell or bash) to
+connect to your Raspberry Pi Pico.</p>
+<p><img alt="6" src="../../../../_images/terminal_micropico.webp" /></p>
+<p>Your terminal should then display this.</p>
 <p><img alt="7" src="../../../../_images/vrepl.png" /></p>
-<p>Then, locate the <strong>Run</strong> button in the <strong>bottom taskbar</strong> and click <strong>Run</strong> to execute the code on your Raspberry Pi Pico. Make sure the Pico is connected before you run your code. You can <strong>stop</strong> or <strong>reset</strong> the program at anytime using the controls in the bottom taskbar or by pressing CTRL+C on your computer (CMD+C on Mac).</p>
+<p>Locate the <strong>Run</strong> button in the <strong>bottom taskbar</strong> and click it to execute
+the code on your Raspberry Pi Pico.  Make sure the Pico is connected before
+running.  You can <strong>stop</strong> or <strong>reset</strong> the program at any time using the
+controls in the bottom taskbar or by pressing CTRL+C (CMD+C on Mac).</p>
 <p><img alt="8" src="../../../../_images/run.png" /></p>
 </section>
 </section>
@@ -533,18 +571,19 @@
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-vs-code">Step 1: Install VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-python-and-the-raspberry-pi-extensions"><strong>Step 2: Install Python and the Raspberry Pi Extensions</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-download-the-micropython-firmware"><strong>Step 3: Download the MicroPython Firmware</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-set-up-a-new-project"><strong>Step 4: Set Up a New Project</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-python-and-the-raspberry-pi-extensions">Step 2: Install Python and the Raspberry Pi Extensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-download-the-micropython-firmware">Step 3: Download the MicroPython Firmware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-organizing-a-folder-for-the-class">Step 4: Organizing a folder for the class</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a><ul class="nav section-nav flex-column">
@@ -554,11 +593,11 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-adding-nescessary-imports">Step 1: Adding nescessary imports</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initalize-led">Step 2: Initalize LED</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-toggling-the-led">Step 3: Toggling the LED</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-alternating-the-led-between-on-and-off">Step 4: Alternating the LED between on and off</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-running-the-program"><strong>Step 5: Running the Program</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-add-necessary-imports">Step 1: Add necessary imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-initialize-the-led">Step 2: Initialize the LED</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-toggle-the-led">Step 3: Toggle the LED</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-add-a-delay">Step 4: Add a delay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-run-the-program">Step 5: Run the program</a></li>
 </ul>
 </li>
 </ul>

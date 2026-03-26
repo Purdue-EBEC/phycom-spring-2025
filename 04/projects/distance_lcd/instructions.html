@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.3.2. Distance Sensor Display &#8212; Purdue University EBEC Physcial Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=aa06c882" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=a8e58a58"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04/projects/distance_lcd/instructions';</script>
+    <script src="../../../_static/svg_mathjax.js?v=40a69827"></script>
+    <script src="../../../_static/svg-inject.js?v=6590e184"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Contributors" href="../../../Appendices/contributors.html" />
+    <link rel="prev" title="4.3. Projects" href="../../2_projects.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Purdue University EBEC Physcial Computing - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Purdue University EBEC Physcial Computing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Physical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Physical Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../01/0_lab_overview.html">1. Introduction to MicroPython and the Raspberry Pi Pico</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../01/1_learning_materials.html">1.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../01/2_projects.html">1.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/1_projectname/project_overview.html">1.2.1. Project 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/0_blink_onboard_led/instructions.html">Blink Onboard LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/1_projectname/1_blink_external_led/instructions.html">Blink External LED</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../01/projects/2_projectname/project_overview.html">1.2.2. Project 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/0_led_switch/instructions.html">LED and Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../01/projects/2_projectname/1_led_button/instructions.html">LED and Button</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../01/projects/stop-lights/instructions.html">1.2.3. Stop Light Project</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../02/0_lab_overview.html">2. Pulse Width Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../02/1_learning_materials.html">2.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../02/2_projects.html">2.2. Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/led_control/instructions.html">2.2.1. Dimming with PMW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/servo_control/instructions.html">2.2.2. Servo Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/continuous_servo/instructions.html">2.2.3. Continuous Servo Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../02/projects/shuffle_car/instructions.html">2.2.4. Shuffle Car</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../03/0_lab_overview.html">3. Lab 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../03/1_learning_materials.html">3.1. Learning Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../03/projects/temperature_lcd/instructions.html">3.2. Displaying Temperature on the LCD Screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../03/projects/etch-a-sketch/instructions.html">3.3. Etch-a-sketch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../0_lab_overview.html">4. Lab 4</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../1_learning_materials.html">4.2. Learning Materials</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../2_projects.html">4.3. Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">4.3.2. Distance Sensor Display</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/contributors.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/1_kit_components/kit_components.html">Kit Components</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Purdue-EBEC/entry-spring-2025/issues/new?title=Issue%20on%20page%20%2F04/projects/distance_lcd/instructions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distance Sensor Display</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-mount-the-pico">Step 1: Mount the Pico</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-mount-the-vl53l0x-sensor">Step 2: Mount the VL53L0X sensor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-wire-power-and-ground">Step 3: Wire power and ground</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-wire-the-i2c-bus">Step 4: Wire the I2C bus</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-add-the-vl53l0x-library">Step 1: Add the VL53L0X library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-write-the-imports">Step 2: Write the imports</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-the-i2c-bus">Step 3: Set up the I2C bus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create-the-sensor-object">Step 4: Create the sensor object</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-configure-timing-and-range">Step 5: Configure timing and range</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-read-distance-in-a-loop">Step 6: Read distance in a loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="distance-sensor-display">
+<h1><span class="section-number">4.3.2. </span>Distance Sensor Display<a class="headerlink" href="#distance-sensor-display" title="Link to this heading">#</a></h1>
+<p>Build a circuit that reads distance measurements from a VL53L0X sensor
+and prints them to the VS Code MicroPico vREPL in real time.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Many devices – robots, automatic doors, parking sensors – need to know how
+far away an object is. The VL53L0X uses a tiny infrared laser to measure
+distance by timing how long the laser pulse takes to bounce back. In this
+project you will wire the sensor to the Raspberry Pi Pico over the I2C bus
+and write MicroPython code that reads and displays the distance every 100 ms.</p>
+<p>Reference:
+<a class="reference external" href="https://docs.sunfounder.com/projects/umsk/en/latest/04_pi_pico/pico_lesson21_vl53l0x.html">VL53L0X tutorial</a></p>
+</section>
+<section id="materials">
+<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>1 breadboard</p></li>
+<li><p>1 Raspberry Pi Pico</p></li>
+<li><p>1 USB cable</p></li>
+<li><p>1 computer with VS Code and the MicroPico extension installed</p></li>
+<li><p>6 jumper wires</p></li>
+<li><p>1 VL53L0X distance sensor – a small blue rectangle with a circular lens.
+Look for the label “VL53L0X” on the board (the “V” may look like a “U”).
+The sensor has four pins: VIN, GND, SCL, and SDA.</p>
+<p><img alt="Time-of-flight range sensor" src="../../../_images/range_calc.png" /></p>
+</li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
+<section id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h3>
+<section id="step-1-mount-the-pico">
+<h4>Step 1: Mount the Pico<a class="headerlink" href="#step-1-mount-the-pico" title="Link to this heading">#</a></h4>
+<p>Place the Raspberry Pi Pico on the breadboard so that each row of pins is
+on a separate side of the center gap.</p>
+</section>
+<section id="step-2-mount-the-vl53l0x-sensor">
+<h4>Step 2: Mount the VL53L0X sensor<a class="headerlink" href="#step-2-mount-the-vl53l0x-sensor" title="Link to this heading">#</a></h4>
+<p>Place the VL53L0X on the breadboard so that you can read the text on it when
+looking at the board straight on. One side of the sensor should be on the
+left rail and the other side on the right rail.</p>
+</section>
+<section id="step-3-wire-power-and-ground">
+<h4>Step 3: Wire power and ground<a class="headerlink" href="#step-3-wire-power-and-ground" title="Link to this heading">#</a></h4>
+<p>Connect the Pico 3.3 V pin to the VIN pin of the sensor.
+Connect a Pico GND pin to the GND pin of the sensor.</p>
+</section>
+<section id="step-4-wire-the-i2c-bus">
+<h4>Step 4: Wire the I2C bus<a class="headerlink" href="#step-4-wire-the-i2c-bus" title="Link to this heading">#</a></h4>
+<p>Connect Pico GP20 to the SDA pin of the sensor.
+Connect Pico GP21 to the SCL pin of the sensor.</p>
+</section>
+</section>
+<section id="code">
+<h3>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h3>
+<section id="step-1-add-the-vl53l0x-library">
+<h4>Step 1: Add the VL53L0X library<a class="headerlink" href="#step-1-add-the-vl53l0x-library" title="Link to this heading">#</a></h4>
+<p>The VL53L0X driver is not included with MicroPython, so you need to copy it
+to the Pico manually.</p>
+<ul class="simple">
+<li><p>Download the library file: <a class="reference download internal" download="" href="../../../_downloads/97ee12925d4d11f29974bf3783625e69/vl53l0x.py"><code class="xref download docutils literal notranslate"><span class="pre">vl53l0x.py</span></code></a></p></li>
+<li><p>Connect your Pico to VS Code and open the MicroPico vREPL.</p></li>
+<li><p>In the VS Code file explorer, right-click <code class="docutils literal notranslate"><span class="pre">vl53l0x.py</span></code> and choose
+<strong>Upload file to Pico</strong>.</p></li>
+</ul>
+</section>
+<section id="step-2-write-the-imports">
+<h4>Step 2: Write the imports<a class="headerlink" href="#step-2-write-the-imports" title="Link to this heading">#</a></h4>
+<p>Create a new file called <code class="docutils literal notranslate"><span class="pre">main.py</span></code> on the Pico and add the following imports:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vl53l0x</span><span class="w"> </span><span class="kn">import</span> <span class="n">VL53L0X</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">utime</span></code> is the MicroPython time module. <code class="docutils literal notranslate"><span class="pre">Pin</span></code> and <code class="docutils literal notranslate"><span class="pre">I2C</span></code> come from the built-in
+<code class="docutils literal notranslate"><span class="pre">machine</span></code> module and let us control the hardware pins.</p>
+</section>
+<section id="step-3-set-up-the-i2c-bus">
+<h4>Step 3: Set up the I2C bus<a class="headerlink" href="#step-3-set-up-the-i2c-bus" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SDA on GP20, SCL on GP21 -- matches the wiring from the Hardware steps</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">I2C</span></code> constructor takes an id that selects the hardware peripheral (0),
+plus pin objects that tell it which GPIO lines to use for data and clock.</p>
+</section>
+<section id="step-4-create-the-sensor-object">
+<h4>Step 4: Create the sensor object<a class="headerlink" href="#step-4-create-the-sensor-object" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tof</span> <span class="o">=</span> <span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Passing the <code class="docutils literal notranslate"><span class="pre">i2c</span></code> object lets the driver communicate with the sensor over the
+bus you just configured.</p>
+</section>
+<section id="step-5-configure-timing-and-range">
+<h4>Step 5: Configure timing and range<a class="headerlink" href="#step-5-configure-timing-and-range" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 40000 us timing budget: slower reads but more accurate results</span>
+<span class="n">tof</span><span class="o">.</span><span class="n">set_measurement_timing_budget</span><span class="p">(</span><span class="mi">40000</span><span class="p">)</span>
+
+<span class="c1"># These VCSEL pulse-period values expand the usable measurement range</span>
+<span class="n">tof</span><span class="o">.</span><span class="n">set_Vcsel_pulse_period</span><span class="p">(</span><span class="n">tof</span><span class="o">.</span><span class="n">vcsel_period_type</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">tof</span><span class="o">.</span><span class="n">set_Vcsel_pulse_period</span><span class="p">(</span><span class="n">tof</span><span class="o">.</span><span class="n">vcsel_period_type</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The timing budget controls how long the sensor spends on each measurement.
+The default is 0 (disabled), so setting it to 40000 microseconds enables full
+accuracy mode. The VCSEL (vertical-cavity surface-emitting laser) pulse periods
+tune the pre-range and final-range phases of the distance algorithm.</p>
+</section>
+<section id="step-6-read-distance-in-a-loop">
+<h4>Step 6: Read distance in a loop<a class="headerlink" href="#step-6-read-distance-in-a-loop" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tof</span><span class="o">.</span><span class="n">ping</span><span class="p">(),</span> <span class="s2">&quot;mm&quot;</span><span class="p">)</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ping()</span></code> triggers a single measurement and returns the distance in millimetres.
+The 100 ms sleep prevents flooding the console with readings.</p>
+</section>
+</section>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<p>Run your code and hold your hand at different distances above the sensor.
+Confirm each of the following:</p>
+<ul class="simple">
+<li><p>Numbers stream continuously in the MicroPico vREPL with “mm” appended.</p></li>
+<li><p>Moving your hand closer produces smaller numbers; moving it further away
+produces larger numbers.</p></li>
+<li><p>Readings are stable (not jumping wildly) when your hand is held still.</p></li>
+<li><p>Removing your hand entirely causes the reading to jump to a large value
+(near the sensor’s maximum range, roughly 1200 mm).</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./04/projects/distance_lcd"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../2_projects.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Projects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../Appendices/contributors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contributors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#materials">Materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-mount-the-pico">Step 1: Mount the Pico</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-mount-the-vl53l0x-sensor">Step 2: Mount the VL53L0X sensor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-wire-power-and-ground">Step 3: Wire power and ground</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-wire-the-i2c-bus">Step 4: Wire the I2C bus</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-add-the-vl53l0x-library">Step 1: Add the VL53L0X library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-write-the-imports">Step 2: Write the imports</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-the-i2c-bus">Step 3: Set up the I2C bus</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-create-the-sensor-object">Step 4: Create the sensor object</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-configure-timing-and-range">Step 5: Configure timing and range</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-read-distance-in-a-loop">Step 6: Read distance in a loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
